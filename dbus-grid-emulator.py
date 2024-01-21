@@ -133,12 +133,23 @@ class DbusTeslaAPIService:
            self._dbusservicegrid['/Ac/L1/Voltage'] = 120
            self._dbusservicegrid['/Ac/L1/Current'] = int(current) / 2
            self._dbusservicegrid['/Ac/L1/Power'] = int(power) / 2
-           self._dbusservicegrid['/Ac/L2/Voltage'] = 0 #120
-           self._dbusservicegrid['/Ac/L2/Current'] = 0 #int(current) / 2
-           self._dbusservicegrid['/Ac/L2/Power'] = 0 #int(power) / 2
+           self._dbusservicegrid['/Ac/L2/Voltage'] = 120
+           self._dbusservicegrid['/Ac/L2/Current'] = int(current) / 2
+           self._dbusservicegrid['/Ac/L2/Power'] = int(power) / 2
          else:
            self._dbusservicegrid['/Ac/L1/Voltage'] = 120
+           self._dbusservicegrid['/Ac/L1/Current'] = current
+           self._dbusservicegrid['/Ac/L1/Power'] = power
            self._dbusservicegrid['/Ac/L2/Voltage'] = 0
+           self._dbusservicegrid['/Ac/L2/Current'] = 0
+           self._dbusservicegrid['/Ac/L2/Power'] = 0
+       else:
+           self._dbusservicegrid['/Ac/L1/Voltage'] = 0
+           self._dbusservicegrid['/Ac/L1/Current'] = 0
+           self._dbusservicegrid['/Ac/L1/Power'] = 0
+           self._dbusservicegrid['/Ac/L2/Voltage'] = 0
+           self._dbusservicegrid['/Ac/L2/Current'] = 0
+           self._dbusservicegrid['/Ac/L2/Power'] = 0
 
        #logging
        logging.debug("Grid Consumption (/Ac/Power): %s" % (self._dbusservicegrid['/Ac/Power']))
