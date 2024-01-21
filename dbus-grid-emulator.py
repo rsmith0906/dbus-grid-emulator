@@ -19,7 +19,6 @@ import configparser # for config/ini file
 sys.path.insert(1, os.path.join(os.path.dirname(__file__), '/opt/victronenergy/dbus-systemcalc-py/ext/velib_python'))
 from vedbus import VeDbusService
 from datetime import datetime
-from multiprocessing import shared_memory
 
 class DbusTeslaAPIService:
   def __init__(self):
