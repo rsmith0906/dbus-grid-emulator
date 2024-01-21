@@ -128,8 +128,8 @@ class DbusTeslaAPIService:
        current = 12
 
        if power > 0: 
+         self._dbusservicegrid['/Ac/Power'] = power
          if voltage > 120:
-           self._dbusservicegrid['/Ac/Power'] = power
            self._dbusservicegrid['/Ac/L1/Voltage'] = 120
            self._dbusservicegrid['/Ac/L1/Current'] = int(current) / 2
            self._dbusservicegrid['/Ac/L1/Power'] = int(power) / 2
