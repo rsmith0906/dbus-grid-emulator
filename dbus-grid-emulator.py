@@ -128,7 +128,7 @@ class DbusTeslaAPIService:
 
        power = 1024
        totalin = 1024
-       totalout = 1024
+       totalout = 0
 
        self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
        self._dbusservice['/Ac/L1/Voltage'] = 230
