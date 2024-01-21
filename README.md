@@ -43,22 +43,22 @@ Thats it 😄
 
 ## Install & Configuration
 ### Get the code
-Just grap a copy of the main branche and copy them to a folder under `/data/` e.g. `/data/dbus-teslaapi-evcharger`.
+Just grap a copy of the main branche and copy them to a folder under `/data/` e.g. `/data/dbus-grid-emulator`.
 After that call the install.sh script.
 
 The following script should do everything for you:
 ```
-wget https://github.com/rsmith0906/dbus-teslaapi-evcharger/archive/refs/heads/main.zip
-unzip main.zip "dbus-teslaapi-evcharger-main/*" -d /data
-mv /data/dbus-teslaapi-evcharger-main /data/dbus-teslaapi-evcharger
-chmod a+x /data/dbus-teslaapi-evcharger/install.sh
-/data/dbus-teslaapi-evcharger/install.sh
+wget https://github.com/rsmith0906/dbus-grid-emulator/archive/refs/heads/main.zip
+unzip main.zip "dbus-grid-emulator-main/*" -d /data
+mv /data/dbus-grid-emulator-main /data/dbus-grid-emulator
+chmod a+x /data/dbus-grid-emulator/install.sh
+/data/dbus-grid-emulator/install.sh
 rm main.zip
 ```
 ⚠️ Check configuration after that - because service is already installed an running and with wrong connection data (host, username, pwd) you will spam the log-file
 
 ### Change config.ini
-Within the project there is a file `/data/dbus-teslaapi-evcharger/config.ini` - just change the values - most important is the deviceinstance, custom name and phase under "DEFAULT" and host, username and password in section "ONPREMISE". More details below:
+Within the project there is a file `/data/dbus-grid-emulator/config.ini` - just change the values - most important is the deviceinstance, custom name and phase under "DEFAULT" and host, username and password in section "ONPREMISE". More details below:
 
 | Section  | Config vlaue | Explanation |
 | ------------- | ------------- | ------------- |
