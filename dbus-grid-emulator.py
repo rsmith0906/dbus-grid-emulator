@@ -82,10 +82,10 @@ class DbusTeslaAPIService:
       dbusservice.add_path('/CustomName', customname)
       dbusservice.add_path('/Connected', 1)
       dbusservice.add_path('/Latency', None)
-      dbusservice.add_path('/FirmwareVersion', self._getTeslaAPIVersion())
+      dbusservice.add_path('/FirmwareVersion', "1.0")
       dbusservice.add_path('/HardwareVersion', 0)
       dbusservice.add_path('/Position', int(config['DEFAULT']['Position']))
-      dbusservice.add_path('/Serial', self._getTeslaAPISerial())
+      dbusservice.add_path('/Serial', "0000000000")
       dbusservice.add_path('/UpdateIndex', 0)
 
       # add path values to dbus
