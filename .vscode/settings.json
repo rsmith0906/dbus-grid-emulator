@@ -1,0 +1,23 @@
+{
+    "cSpell.words": [
+        "ccgx",
+        "Dbus",
+        "dbusconnection",
+        "dbusservice",
+        "dbusserviceev",
+        "dbusservicegrid",
+        "dbusservicename",
+        "deviceinstance",
+        "evcharger",
+        "gettextcallback",
+        "gobject",
+        "handlechangedvalue",
+        "Mgmt",
+        "onchangecallback",
+        "productname",
+        "systemcalc",
+        "textformat",
+        "Victron",
+        "victronenergy"
+    ]
+}
