@@ -122,34 +122,52 @@ class DbusTeslaAPIService:
   def _update(self):
     try:
        config = self._getConfig()
-        
-       power = 1234
+      
        voltage = 120
        current = 12
 
-       if power > 0: 
-         self._dbusservicegrid['/Ac/Power'] = power
-         if voltage > 120:
-           self._dbusservicegrid['/Ac/L1/Voltage'] = 120
-           self._dbusservicegrid['/Ac/L1/Current'] = int(current) / 2
-           self._dbusservicegrid['/Ac/L1/Power'] = int(power) / 2
-           self._dbusservicegrid['/Ac/L2/Voltage'] = 120
-           self._dbusservicegrid['/Ac/L2/Current'] = int(current) / 2
-           self._dbusservicegrid['/Ac/L2/Power'] = int(power) / 2
-         else:
-           self._dbusservicegrid['/Ac/L1/Voltage'] = 120
-           self._dbusservicegrid['/Ac/L1/Current'] = current
-           self._dbusservicegrid['/Ac/L1/Power'] = power
-           self._dbusservicegrid['/Ac/L2/Voltage'] = 0
-           self._dbusservicegrid['/Ac/L2/Current'] = 0
-           self._dbusservicegrid['/Ac/L2/Power'] = 0
-       else:
-           self._dbusservicegrid['/Ac/L1/Voltage'] = 0
-           self._dbusservicegrid['/Ac/L1/Current'] = 0
-           self._dbusservicegrid['/Ac/L1/Power'] = 0
-           self._dbusservicegrid['/Ac/L2/Voltage'] = 0
-           self._dbusservicegrid['/Ac/L2/Current'] = 0
-           self._dbusservicegrid['/Ac/L2/Power'] = 0
+       power = 1024
+       totalin = 1024
+       totalout = 1024
+
+       self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
+       self._dbusservice['/Ac/L1/Voltage'] = 230
+       self._dbusservice['/Ac/L2/Voltage'] = 230
+       #self._dbusservice['/Ac/L3/Voltage'] = 230
+       self._dbusservice['/Ac/L1/Current'] = round(power/3 / 230 ,2)
+       self._dbusservice['/Ac/L2/Current'] = round(power/3 / 230 ,2)
+       #self._dbusservice['/Ac/L3/Current'] = round(power/3 / 230 ,2)
+       self._dbusservice['/Ac/L1/Power'] = round(power/3, 2)
+       self._dbusservice['/Ac/L2/Power'] = round(power/3, 2)
+       #self._dbusservice['/Ac/L3/Power'] = round(power/3, 2)
+
+       self._dbusservice['/Ac/Energy/Forward'] = totalin
+       self._dbusservice['/Ac/Energy/Reverse'] = totalout
+
+      #  if power > 0: 
+      #    self._dbusservicegrid['/Ac/Power'] = power
+      #    self._dbusservicegrid['/Ac/Energy/Forward'] = "1.00kWh"
+      #    if voltage > 120:
+      #      self._dbusservicegrid['/Ac/L1/Voltage'] = 120
+      #      self._dbusservicegrid['/Ac/L1/Current'] = int(current) / 2
+      #      self._dbusservicegrid['/Ac/L1/Power'] = int(power) / 2
+      #      self._dbusservicegrid['/Ac/L2/Voltage'] = 120
+      #      self._dbusservicegrid['/Ac/L2/Current'] = int(current) / 2
+      #      self._dbusservicegrid['/Ac/L2/Power'] = int(power) / 2
+      #    else:
+      #      self._dbusservicegrid['/Ac/L1/Voltage'] = 120
+      #      self._dbusservicegrid['/Ac/L1/Current'] = current
+      #      self._dbusservicegrid['/Ac/L1/Power'] = power
+      #      self._dbusservicegrid['/Ac/L2/Voltage'] = 0
+      #      self._dbusservicegrid['/Ac/L2/Current'] = 0
+      #      self._dbusservicegrid['/Ac/L2/Power'] = 0
+      #  else:
+      #      self._dbusservicegrid['/Ac/L1/Voltage'] = 0
+      #      self._dbusservicegrid['/Ac/L1/Current'] = 0
+      #      self._dbusservicegrid['/Ac/L1/Power'] = 0
+      #      self._dbusservicegrid['/Ac/L2/Voltage'] = 0
+      #      self._dbusservicegrid['/Ac/L2/Current'] = 0
+      #      self._dbusservicegrid['/Ac/L2/Power'] = 0
 
        #logging
        logging.debug("Grid Consumption (/Ac/Power): %s" % (self._dbusservicegrid['/Ac/Power']))

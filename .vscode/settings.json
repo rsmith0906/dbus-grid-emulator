@@ -17,6 +17,8 @@
         "productname",
         "systemcalc",
         "textformat",
+        "totalin",
+        "totalout",
         "Victron",
         "victronenergy"
     ]
