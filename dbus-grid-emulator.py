@@ -129,23 +129,22 @@ class DbusTeslaAPIService:
        voltage = 120
        current = 12
 
-       power = 10000
-       totalin = 10000
+       power = 2075
+       totalin = 2075
        totalout = 0
-
-       self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
-       self._dbusservice['/Ac/L1/Voltage'] = 230
-       self._dbusservice['/Ac/L2/Voltage'] = 230
-       #self._dbusservice['/Ac/L3/Voltage'] = 230
-       self._dbusservice['/Ac/L1/Current'] = round(power/2 / 230 ,2)
-       self._dbusservice['/Ac/L2/Current'] = round(power/2 / 230 ,2)
-       #self._dbusservice['/Ac/L3/Current'] = round(power/3 / 230 ,2)
-       self._dbusservice['/Ac/L1/Power'] = round(power/2, 2)
-       self._dbusservice['/Ac/L2/Power'] = round(power/2, 2)
-       #self._dbusservice['/Ac/L3/Power'] = round(power/3, 2)
 
        self._dbusservice['/Ac/Energy/Forward'] = totalin
        self._dbusservice['/Ac/Energy/Reverse'] = totalout
+       self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
+       self._dbusservice['/Ac/L1/Voltage'] = 230
+       self._dbusservice['/Ac/L2/Voltage'] = 230
+       self._dbusservice['/Ac/L3/Voltage'] = 230
+       self._dbusservice['/Ac/L1/Current'] = round(power/2 / 230 ,2)
+       self._dbusservice['/Ac/L2/Current'] = round(power/2 / 230 ,2)
+       self._dbusservice['/Ac/L3/Current'] = round(power/3 / 230 ,2)
+       self._dbusservice['/Ac/L1/Power'] = round(power/2, 2)
+       self._dbusservice['/Ac/L2/Power'] = round(power/2, 2)
+       self._dbusservice['/Ac/L3/Power'] = round(power/3, 2)
 
       #  if power > 0: 
       #    self._dbusservicegrid['/Ac/Power'] = power
