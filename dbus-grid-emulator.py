@@ -57,6 +57,9 @@ class DbusTeslaAPIService:
             '/Ac/L2/Current': {'initial': 0, 'textformat': _a},
             '/Ac/L2/Power': {'initial': 0, 'textformat': _w},
             '/Ac/L2/Voltage': {'initial': 0, 'textformat': _v},
+            '/Ac/L3/Current': {'initial': 0, 'textformat': _a},
+            '/Ac/L3/Power': {'initial': 0, 'textformat': _w},
+            '/Ac/L3/Voltage': {'initial': 0, 'textformat': _v},
           })
 
     # last update
@@ -126,19 +129,19 @@ class DbusTeslaAPIService:
        voltage = 120
        current = 12
 
-       power = 1024
-       totalin = 1024
+       power = 10000
+       totalin = 10000
        totalout = 0
 
        self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
        self._dbusservice['/Ac/L1/Voltage'] = 230
        self._dbusservice['/Ac/L2/Voltage'] = 230
        #self._dbusservice['/Ac/L3/Voltage'] = 230
-       self._dbusservice['/Ac/L1/Current'] = round(power/3 / 230 ,2)
-       self._dbusservice['/Ac/L2/Current'] = round(power/3 / 230 ,2)
+       self._dbusservice['/Ac/L1/Current'] = round(power/2 / 230 ,2)
+       self._dbusservice['/Ac/L2/Current'] = round(power/2 / 230 ,2)
        #self._dbusservice['/Ac/L3/Current'] = round(power/3 / 230 ,2)
-       self._dbusservice['/Ac/L1/Power'] = round(power/3, 2)
-       self._dbusservice['/Ac/L2/Power'] = round(power/3, 2)
+       self._dbusservice['/Ac/L1/Power'] = round(power/2, 2)
+       self._dbusservice['/Ac/L2/Power'] = round(power/2, 2)
        #self._dbusservice['/Ac/L3/Power'] = round(power/3, 2)
 
        self._dbusservice['/Ac/Energy/Forward'] = totalin
