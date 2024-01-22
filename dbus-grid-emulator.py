@@ -136,6 +136,8 @@ class DbusTeslaAPIService:
        self._dbusservice['/Ac/Energy/Forward'] = totalin
        self._dbusservice['/Ac/Energy/Reverse'] = totalout
        self._dbusservice['/Ac/Power'] =  power # positive: consumption, negative: feed into grid
+       self._dbusservice['/Ac/Current'] = round(power / 230 ,2)
+       self._dbusservice['/Ac/Voltage'] = 230
        self._dbusservice['/Ac/L1/Voltage'] = 230
        self._dbusservice['/Ac/L2/Voltage'] = 230
        self._dbusservice['/Ac/L3/Voltage'] = 230
